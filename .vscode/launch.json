@@ -8,7 +8,7 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/COMUN/minishell",
+			"program": "${workspaceFolder}/Philosophers",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
