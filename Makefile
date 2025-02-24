@@ -4,7 +4,7 @@
 
 NAME        = Philosophers
 CC          = gcc
-CFLAGS      = -Wall -Wextra -Werror -g -I./src/includes
+CFLAGS      = -Wall -Wextra -Werror -O3 -I./src/includes
 LDFLAGS     = -lreadline
 
 # Directorios
