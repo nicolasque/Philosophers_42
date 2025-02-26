@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/02/22 19:12:35 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/02/26 02:51:49 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define NEWMINI_H
 
 # include "libft/libft.h"
+# include "colors.h"
 # include <ctype.h>
 # include <errno.h>
 # include <fcntl.h>
@@ -29,15 +30,26 @@
 # include <sys/wait.h>
 # include <termios.h>
 # include <unistd.h>
+#include <pthread.h>
+#include <sys/time.h>
 
-typedef struct s_philo
+typedef struct s_const
 {
 	int		nbr_filo;
 	int		time_to_die;
 	int		time_to_eat;
 	int		time_to_sleep;
 	int		nbr_times_to_eat;
-}						t_pholo;
+}						t_const;
+
+//PARSEO
+bool ft_check_nbr(char *str);
+bool	ft_chek_individual_arg(char **argv);
+bool	ft_check_args(int argc, char **argv);
+
+
+//INIT
+void ft_init_const(char **argv, t_const *t_const);
 
 
 #endif

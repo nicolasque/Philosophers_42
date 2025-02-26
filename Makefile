@@ -13,6 +13,10 @@ PARSEO_DIR  = src/parseo
 FREE_DIR    = src/free
 UTILS_DIR   = src/utils
 
+PARSEO_SRCS = \
+		$(PARSEO_DIR)/ft_verify_nbr.c \
+		$(PARSEO_DIR)/ft_init_const.c \
+
 FREE_SRCS = \
 
 UTILS_SRCS = \
