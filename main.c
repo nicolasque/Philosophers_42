@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/02/26 03:02:27 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/02/26 03:09:45 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ int	main(int argc, char **argv)
 		return (1);
 	ft_init_const(argv, &t_const);
 	ft_print_const(&t_const);
+
+
 	return (0);
 }
