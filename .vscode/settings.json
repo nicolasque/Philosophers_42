@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"newmini.h": "c"
+		"newmini.h": "c",
+		"philosophers.h": "c"
 	}
 }
