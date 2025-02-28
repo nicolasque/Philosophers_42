@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/02/26 03:09:45 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/02/28 01:31:55 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void ft_print_const(t_const *t_const)
 int	main(int argc, char **argv)
 {
 	struct s_const t_const;
+	
 
 	(void)t_const;
 	argv ++; // Para saltar el nombre del porgrama

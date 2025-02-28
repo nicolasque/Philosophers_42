@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"newmini.h": "c",
-		"philosophers.h": "c"
+		"philosophers.h": "c",
+		"pthread.h": "c"
 	}
 }
