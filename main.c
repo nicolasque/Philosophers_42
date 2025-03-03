@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 21:47:29 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:13:40 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,30 @@ void	ft_init_philos(t_shared *t_shared, t_philo *t_philo)
 	t_philo[i].id_philo = PHILO_LAST;
 }
 
+void ft_eat(t_philo *t_philo)
+{
+	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->left_fork]);
+	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->right_fork]);
+	pthread_mutex_lock(&t_philo->t_shared->print_mutex);
+	printf("%sId_Philo: %d has eaten%s\n",CYAN,t_philo->id_philo ,RESET);
+	pthread_mutex_unlock(&t_philo->t_shared->print_mutex);
+	usleep(1000 * t_philo->t_shared->time_to_eat);
+	t_philo->times_eaten++;
+	pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->right_fork]);
+	pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->left_fork]);
+
+}
+
 void *ft_proces(void *arg)
 {
 	t_philo *t_philo;
 
 	t_philo = arg;
-	pthread_mutex_lock(&t_philo->t_shared->print_mutex);
-	printf("Este es el hilo: %d\n", t_philo->id_philo);
-	pthread_mutex_unlock(&t_philo->t_shared->print_mutex);
+	ft_eat(t_philo);
 	return (NULL);
 }
+
+
 
 // void	*ft_monitor(void *arg)
 // {

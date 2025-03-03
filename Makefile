@@ -20,7 +20,9 @@ PARSEO_SRCS = \
 FREE_SRCS = \
 
 UTILS_SRCS = \
-		$(UTILS_DIR)/prints.c
+		$(UTILS_DIR)/prints.c \
+		$(UTILS_DIR)/ft_mutex_destroyer.c
+
 
 MAIN_SRCS = main.c
 

@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 21:40:28 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:07:10 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_philo
 	size_t			time_star;
 	size_t			time_end;
 	pthread_t		philo_thread;
-	pthread_mutex_t	fork_mutex;
 	t_shared		*t_shared;
 }					t_philo;
 
@@ -84,8 +83,8 @@ void				ft_init_shared(char **argv, t_shared *t_shared);
 	void ft_print_shared(t_shared *t_shared);
 	void ft_print_args(char **argv);
 	void ft_print_philos(t_philo *t_philos);
-
-
+	//ft_mutex_destroy.c
+	void	ft_mutex_destroyer(t_shared *t_shared);
 
 
 #endif

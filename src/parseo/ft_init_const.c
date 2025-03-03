@@ -33,5 +33,4 @@ void ft_init_shared(char **argv, t_shared *t_shared)
         pthread_mutex_init(&t_shared->forks[i], NULL);
 		i++;
 	}
-
 }
