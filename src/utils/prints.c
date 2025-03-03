@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:22:01 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:57:03 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:48:15 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void ft_print_philos(t_philo *t_philos)
 	{
 		printf("=================\n");
 		printf("Philo_id: %d\n", t_philos[i].id_philo);
-		printf("Philo_fork: %d\n", t_philos[i].fork);
+		printf("Philo_left_fork: %d\n", t_philos[i].left_fork);
+		printf("Philo_right_fork: %d\n", t_philos[i].right_fork);
 		if (t_philos[i].live == ALIVE)
 			printf("Philo_live: %sALIVE%s\n", GREEN, RESET);
 		else

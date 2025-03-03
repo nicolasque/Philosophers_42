@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:34:52 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/03 21:40:28 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 #define ALIVE 22
 #define DEAD -23
 
+typedef struct s_philo t_philo;
+
 typedef struct s_shared
 {
 	int				nbr_filo;
@@ -45,22 +47,23 @@ typedef struct s_shared
 	long int				time_to_eat;
 	long int				time_to_sleep;
 	int				nbr_times_to_eat;
-	pthread_mutex_t print_mutex;    // Para imprimir mensajes
+	pthread_mutex_t print_mutex;
     pthread_mutex_t death_mutex;
+    pthread_mutex_t *forks;
+	t_philo			*t_philos;
 }					t_shared;
 
 typedef struct s_philo
 {
 	int				id_philo;
-	int				fork;
+	int				left_fork;
+	int				right_fork;
 	int				live;
 	int				times_eaten;
 	size_t			time_star;
 	size_t			time_end;
 	pthread_t		philo_thread;
 	pthread_mutex_t	fork_mutex;
-	pthread_mutex_t	sleep_mutex;
-	pthread_mutex_t	think_mutex;
 	t_shared		*t_shared;
 }					t_philo;
 

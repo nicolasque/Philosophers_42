@@ -14,6 +14,9 @@
 
 void ft_init_shared(char **argv, t_shared *t_shared)
 {
+	int i;
+
+	i = 0;
 	t_shared->nbr_filo = ft_atoi(argv[0]);
 	t_shared->time_to_die = ft_atoi(argv[1]);
 	t_shared->time_to_eat = ft_atoi(argv[2]);
@@ -24,5 +27,11 @@ void ft_init_shared(char **argv, t_shared *t_shared)
 		t_shared->nbr_times_to_eat = false;
 	pthread_mutex_init(&t_shared->print_mutex, NULL);
 	pthread_mutex_init(&t_shared->death_mutex, NULL);
+	t_shared->forks = malloc(sizeof(pthread_mutex_t) * t_shared->nbr_filo);
+	while (i < t_shared->nbr_filo)
+	{
+        pthread_mutex_init(&t_shared->forks[i], NULL);
+		i++;
+	}
 
 }
