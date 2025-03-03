@@ -4,7 +4,7 @@
 
 NAME        = Philosophers
 CC          = gcc
-CFLAGS      = -Wall -Wextra -Werror -O3 -I./src/includes
+CFLAGS      = -Wall -Wextra -Werror -g -I./src/includes
 LDFLAGS     = -lreadline
 
 # Directorios
@@ -20,6 +20,7 @@ PARSEO_SRCS = \
 FREE_SRCS = \
 
 UTILS_SRCS = \
+		$(UTILS_DIR)/prints.c
 
 MAIN_SRCS = main.c
 
