@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 19:19:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/01/27 18:21:47 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/03 22:30:32 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 int					ft_printf(char const *str, ...);
 char				**ft_free_split(char **result, int i);
+long				ft_atol(const char *str);
 
 #endif // LIBFT_H

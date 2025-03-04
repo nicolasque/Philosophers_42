@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 22:07:10 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/04 03:23:52 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_shared
 	long int				time_to_eat;
 	long int				time_to_sleep;
 	int				nbr_times_to_eat;
+	long long int	program_star_time;
 	pthread_mutex_t print_mutex;
     pthread_mutex_t death_mutex;
     pthread_mutex_t *forks;
@@ -60,7 +61,7 @@ typedef struct s_philo
 	int				right_fork;
 	int				live;
 	int				times_eaten;
-	size_t			time_star;
+	size_t			last_time_eaten;
 	size_t			time_end;
 	pthread_t		philo_thread;
 	t_shared		*t_shared;
@@ -85,6 +86,21 @@ void				ft_init_shared(char **argv, t_shared *t_shared);
 	void ft_print_philos(t_philo *t_philos);
 	//ft_mutex_destroy.c
 	void	ft_mutex_destroyer(t_shared *t_shared);
+	//ft_chak_dead_time.c
+	int ft_check_dead_time(t_philo *t_philo);
+
+
+	//get_time.c
+	long	get_time_ms(void);
+	long int get_time_s(void);
+	void custom_sleep_ms(long ms);
+
+//ACCTIONS
+void ft_eat(t_philo *t_philo);
+void ft_sleep(t_philo *t_philo);
+void ft_think(t_philo *t_philo);
+
+
 
 
 #endif

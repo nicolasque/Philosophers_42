@@ -17,10 +17,11 @@ void ft_init_shared(char **argv, t_shared *t_shared)
 	int i;
 
 	i = 0;
-	t_shared->nbr_filo = ft_atoi(argv[0]);
-	t_shared->time_to_die = ft_atoi(argv[1]);
-	t_shared->time_to_eat = ft_atoi(argv[2]);
-	t_shared->time_to_sleep = ft_atoi(argv[3]);
+	t_shared->nbr_filo = ft_atol(argv[0]);
+	t_shared->time_to_die = ft_atol(argv[1]);
+	t_shared->time_to_eat = ft_atol(argv[2]);
+	t_shared->time_to_sleep = ft_atol(argv[3]);
+	t_shared->program_star_time = get_time_s();
 	if (argv[4])
 		t_shared->nbr_times_to_eat = ft_atoi(argv[4]);
 	else

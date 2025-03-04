@@ -12,6 +12,7 @@ LIBFT_DIR   = src/includes/libft
 PARSEO_DIR  = src/parseo
 FREE_DIR    = src/free
 UTILS_DIR   = src/utils
+ACCTIONS_DIR = src/acctions
 
 PARSEO_SRCS = \
 		$(PARSEO_DIR)/ft_verify_nbr.c \
@@ -21,8 +22,12 @@ FREE_SRCS = \
 
 UTILS_SRCS = \
 		$(UTILS_DIR)/prints.c \
-		$(UTILS_DIR)/ft_mutex_destroyer.c
+		$(UTILS_DIR)/ft_mutex_destroyer.c \
+		$(UTILS_DIR)/get_time_s.c \
+		$(UTILS_DIR)/ft_check_dead_time.c
 
+ACCTIONS_SRCS = \
+		$(ACCTIONS_DIR)/ft_acctions.c
 
 MAIN_SRCS = main.c
 
@@ -31,7 +36,8 @@ SRCS = \
 	$(MAIN_SRCS) \
 	$(PARSEO_SRCS) \
 	$(FREE_SRCS) \
-	$(UTILS_SRCS)
+	$(UTILS_SRCS) \
+	$(ACCTIONS_SRCS)
 
 # Create object directories
 OBJ_DIR = obj
@@ -41,7 +47,8 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 DIRS = $(OBJ_DIR) \
        $(OBJ_DIR)/$(PARSEO_DIR) \
        $(OBJ_DIR)/$(FREE_DIR) \
-       $(OBJ_DIR)/$(UTILS_DIR)
+       $(OBJ_DIR)/$(UTILS_DIR) \
+	   $(OBJ_DIR)/$(ACCTIONS_DIR)
 
 # Regla principal para compilar
 all: $(DIRS) $(LIBFT_DIR)/libft.a $(NAME)

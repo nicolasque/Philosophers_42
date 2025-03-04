@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:22:01 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 21:48:15 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/04 02:51:59 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void ft_print_philos(t_philo *t_philos)
 		else
 			printf("Philo_live: %sDEAD%s\n", RED, RESET);
 		printf("Philo_time_eaten: %d\n", t_philos[i].times_eaten);
-		printf("Philo_time_start: %ld\n", t_philos[i].time_star);
+		printf("Philo_time_start: %ld\n", t_philos[i].last_time_eaten);
 		printf("Philo_time_end: %ld\n", t_philos[i].time_end);
 		printf("=================\n\n");
 		i++;
