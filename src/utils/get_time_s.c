@@ -6,13 +6,13 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:23:31 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/04 03:33:22 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:15:08 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Philosophers.h"
 
-long	get_time_ms(void)
+long	get_time_micros(void)
 {
     struct timeval	time;
     long			milliseconds;
@@ -32,20 +32,28 @@ long int get_time_s(void)
 	return (seconds);
 }
 
-void custom_sleep_ms(long ms)
+long int	get_time_mls(void)
 {
-    long time;
-    
-    // Convertir ms a microsegundos y dividir por 500 para obtener iteraciones
-    time = (ms * 1000) / 500;
-    
-    // Si ms es muy pequeño, al menos ejecutar una vez
-    if (time == 0 && ms > 0)
-        time = 1;
-        
-    while (time)
-    {
-        usleep(500);
-        time--;
-    }
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+long int	diff_time(long int time)
+{
+	return (get_time_mls() - time);
+}
+
+void custom_sleep_ms(long int time)
+{
+	long int	start;
+
+	start = get_time_mls();
+	while (42)
+	{
+		if (diff_time(start) >= time)
+			break ;
+		usleep(100);
+	}
 }

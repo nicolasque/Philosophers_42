@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/04 03:23:52 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/04 16:36:57 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ typedef struct s_philo
 	int				right_fork;
 	int				live;
 	int				times_eaten;
-	size_t			last_time_eaten;
-	size_t			time_end;
+	long int			last_time_eaten;
+	long int	time_end;
 	pthread_t		philo_thread;
 	t_shared		*t_shared;
 }					t_philo;
@@ -91,9 +91,10 @@ void				ft_init_shared(char **argv, t_shared *t_shared);
 
 
 	//get_time.c
-	long	get_time_ms(void);
+	long	get_time_micros(void);
 	long int get_time_s(void);
-	void custom_sleep_ms(long ms);
+	long int	get_time_mls(void);
+	void custom_sleep_ms(long int time);
 
 //ACCTIONS
 void ft_eat(t_philo *t_philo);
