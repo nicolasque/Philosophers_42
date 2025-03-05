@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/05 17:22:47 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:32:17 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	*ft_proces(void *arg)
 		}
 		else
 		{
-			if (t_philo->t_shared->philos_live == DEAD)
-			return (NULL);
 			printf("%sTime: %lld Id_Philo: %d Has died%s\n", RED, (get_time_s()
 					- t_philo->t_shared->program_star_time), t_philo->id_philo,
 				RESET);
