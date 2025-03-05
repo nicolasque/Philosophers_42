@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:11:20 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/04 16:47:57 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:17:02 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int ft_check_dead_time(t_philo *t_philo)
 	{
 		t_philo->live =DEAD;
 		is_dead = 1;
-
 	}
     pthread_mutex_unlock(&t_philo->t_shared->death_mutex);
 

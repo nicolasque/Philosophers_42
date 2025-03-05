@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/04 16:58:14 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:22:47 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,64 +41,60 @@ void	*ft_proces(void *arg)
 	t_philo = arg;
 	i = 0;
 	if (t_philo->id_philo % 2 == 0)
-		custom_sleep_ms(50);
+		custom_sleep_ms(100);
 	while (1)
 	{
-		if (t_philo->live == ALIVE)
+		if (t_philo->t_shared->philos_live != DEAD)
 		{
-			if (t_philo->live == ALIVE)
-			{
 				ft_eat(t_philo);
-			}
-			if (t_philo->live == ALIVE)
-			{
 				ft_sleep(t_philo);
-			}
-			if (t_philo->live == ALIVE)
-			{
 				ft_think(t_philo);
-			}
-			else
-			{
-				printf("%sTime: %lld Id_Philo: %d Has died%s\n", RED, (get_time_s()
-					- t_philo->t_shared->program_star_time), t_philo->id_philo,
-					RESET);
-				exit(1);
-			}
+				if (t_philo->t_shared->philos_live != DEAD)
+					continue;
 		}
 		else
 		{
+			if (t_philo->t_shared->philos_live == DEAD)
+			return (NULL);
 			printf("%sTime: %lld Id_Philo: %d Has died%s\n", RED, (get_time_s()
 					- t_philo->t_shared->program_star_time), t_philo->id_philo,
 				RESET);
-			exit(1);
+			return (NULL);
 		}
 		i++;
 	}
 	return (NULL);
 }
 
-// void	*ft_monitor(void *arg)
-// {
-// 	t_shared *t_shared;
-// 	t_philo *t_philos;
+void	*ft_monitor(void *arg)
+{
+	t_shared *t_shared;
+	t_philo *t_philos;
+	int i;
 
-// 	t_shared = arg;
-// 	t_philos = t_shared->t_philos;
-
-// 	while (1)
-// 	{
-
-// 	}
-
-// }
+	i = 0;
+	t_shared = arg;
+	t_philos = t_shared->t_philos;
+	while (1)
+	{
+		if (t_philos[i].live == DEAD)
+		{
+			t_shared->philos_live = DEAD;
+			break;
+		}
+		if (t_philos[i].id_philo == PHILO_LAST)
+			i = 0;
+	}
+	return (NULL);
+}
 
 void	ft_init_theads(t_philo *t_philos, t_shared *t_shared)
 {
 	int	i;
+	pthread_t		t_monitor;
 
 	i = 0;
-	(void)t_shared;
+	pthread_create(&t_monitor, NULL, &ft_monitor, t_shared);
 	while (t_philos[i].id_philo != PHILO_LAST)
 	{
 		pthread_create(&t_philos[i].philo_thread, NULL, &ft_proces,
@@ -106,6 +102,7 @@ void	ft_init_theads(t_philo *t_philos, t_shared *t_shared)
 		i++;
 	}
 	i = 0;
+	pthread_join(t_monitor, NULL);
 	while (t_philos[i].id_philo != PHILO_LAST)
 	{
 		pthread_join(t_philos[i].philo_thread, NULL);
