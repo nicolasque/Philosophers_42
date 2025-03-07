@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/05 17:32:17 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:11:20 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,14 @@ void	*ft_proces(void *arg)
 	t_philo = arg;
 	i = 0;
 	if (t_philo->id_philo % 2 == 0)
-		custom_sleep_ms(100);
+		custom_sleep_ms(50);
 	while (1)
 	{
-		if (t_philo->t_shared->philos_live != DEAD)
-		{
-				ft_eat(t_philo);
-				ft_sleep(t_philo);
-				ft_think(t_philo);
-				if (t_philo->t_shared->philos_live != DEAD)
-					continue;
-		}
-		else
-		{
-			printf("%sTime: %lld Id_Philo: %d Has died%s\n", RED, (get_time_s()
-					- t_philo->t_shared->program_star_time), t_philo->id_philo,
-				RESET);
+		if (t_philo->t_shared->philos_live == DEAD)
 			return (NULL);
-		}
+		ft_eat(t_philo);
+		ft_sleep(t_philo);
+		ft_think(t_philo);
 		i++;
 	}
 	return (NULL);
@@ -78,6 +68,9 @@ void	*ft_monitor(void *arg)
 		if (t_philos[i].live == DEAD)
 		{
 			t_shared->philos_live = DEAD;
+			printf("%sTime: %lld Id_Philo: %d Has died%s\n", RED, (get_time_s()
+					- t_shared->program_star_time), t_philos[i].id_philo,
+				RESET);
 			break;
 		}
 		if (t_philos[i].id_philo == PHILO_LAST)
