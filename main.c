@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/10 17:55:25 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/10 18:13:47 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,19 @@ void	*ft_monitor(void *arg)
 		{
 			t_shared->philos_live = DEAD;
 			printf("%sTime: %lld Id_Philo: %d Has died%s\n", RED, (get_time_mls()
-					- t_shared->program_star_time), t_philos[i].id_philo,
-				RESET);
+			- t_shared->program_star_time), t_philos[i].id_philo,
+			RESET);
 			break;
 		}
-		if (t_philos[i].times_eaten < t_shared->nbr_times_to_eat && t_philos[i].id_philo != PHILO_LAST)
-		{
+		// ft_check_dead_time(&t_philos[i]);
+		// if (t_philos[i].times_eaten < t_shared->nbr_times_to_eat && t_philos[i].id_philo != PHILO_LAST)
+		// {
+			// 	i++;
+			// 	continue ;
+			// }
 			i++;
-			continue ;
-		}
 		if (t_philos[i].id_philo == PHILO_LAST)
 			i = 0;
-		i++;
 	}
 	return (NULL);
 }
