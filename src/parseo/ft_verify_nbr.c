@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:35:37 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/02/26 02:40:24 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:57:08 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ bool	ft_check_nbr(char *str)
 }
 bool	ft_chek_individual_arg(char **argv)
 {
-	if (ft_atoi(argv[0]) <= 1 || ft_atoi(argv[0]) >= 300)
+	if (ft_atoi(argv[0]) <= 0 || ft_atoi(argv[0]) >= PHILO_MAX)
 		return (printf("%sBad Philosofer number %s\n", RED, RESET), false);
 	if (ft_atoi(argv[1]) <= 60)
 		return (printf("%sBad time_to_die %s\n", RED, RESET), false);

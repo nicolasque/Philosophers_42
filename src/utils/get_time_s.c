@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:23:31 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/04 16:15:08 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/10 16:17:42 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void custom_sleep_ms(long int time)
 	long int	start;
 
 	start = get_time_mls();
-	while (42)
+	while (1)
 	{
 		if (diff_time(start) >= time)
 			break ;
-		usleep(100);
+		usleep(50);
 	}
 }
