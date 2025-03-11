@@ -23,10 +23,11 @@ void ft_init_shared(char **argv, t_shared *t_shared)
 	t_shared->time_to_sleep = ft_atol(argv[3]);
 	t_shared->program_star_time = get_time_mls();
 	t_shared->philos_live = ALIVE;
+	printf("ARGV:4 == %s\n", argv[4]);
 	if (argv[4])
 		t_shared->nbr_times_to_eat = ft_atoi(argv[4]);
 	else
-		t_shared->nbr_times_to_eat = false;
+		t_shared->nbr_times_to_eat = 0;
 	pthread_mutex_init(&t_shared->print_mutex, NULL);
 	pthread_mutex_init(&t_shared->death_mutex, NULL);
 	t_shared->forks = malloc(sizeof(pthread_mutex_t) * t_shared->nbr_filo);
