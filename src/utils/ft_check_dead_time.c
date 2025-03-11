@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 01:11:20 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/07 15:38:38 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/11 14:19:01 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,16 @@
 int ft_check_dead_time(t_philo *t_philo)
 {
     long int actual_time;
-    int is_dead = 0;
+    int is_dead;
     
-    // Proteger lectura/escritura con mutex
+	is_dead = ALIVE;
     pthread_mutex_lock(&t_philo->t_shared->death_mutex);
     actual_time = get_time_mls();
-	// printf("(ID: %d)LAST TIME EATE- ACTUAL TIME:  %ld\n",t_philo->id_philo ,(actual_time - t_philo->last_time_eaten));
 	if (t_philo->live == ALIVE && (actual_time - t_philo->last_time_eaten) >= t_philo->t_shared->time_to_die)
 	{
 		t_philo->live = DEAD;
-		is_dead = 1;
+		is_dead = DEAD;
 	}
     pthread_mutex_unlock(&t_philo->t_shared->death_mutex);
-
     return is_dead;
 }
