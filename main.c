@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/11 14:23:09 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:17:48 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	*ft_proces(void *arg)
 			return (NULL);
 		ft_eat(t_philo);
 		if (t_philo->t_shared->philos_live == DEAD)
-		return (NULL);
+			return (NULL);
 		ft_sleep(t_philo);
 		if (t_philo->t_shared->philos_live == DEAD)
-		return (NULL);
+			return (NULL);
 		ft_think(t_philo);
 	}
 	return (NULL);
@@ -57,37 +57,39 @@ void	*ft_proces(void *arg)
 
 void	*ft_monitor_dead(void *arg)
 {
-	t_shared *t_shared;
-	t_philo *t_philos;
-	int i;
+	t_shared	*t_shared;
+	t_philo		*t_philos;
+	int			i;
 
 	i = 0;
 	t_shared = arg;
 	t_philos = t_shared->t_philos;
 	while (1)
 	{
+		if (t_philos[i].id_philo == PHILO_LAST)
+			i = 0;
 		if (t_shared->philos_live == DEAD)
-			break;
+			break ;
 		if (t_philos[i].live == DEAD)
 		{
 			t_shared->philos_live = DEAD;
+			pthread_mutex_lock(&t_philos->t_shared->print_mutex);
 			printf("%s%lld %d Has died%s\n", RED, (get_time_mls()
-			- t_shared->program_star_time), t_philos[i].id_philo,
-			RESET);
-			break;
+					- t_shared->program_star_time), t_philos[i].id_philo,
+				RESET);
+			pthread_mutex_unlock(&t_philos->t_shared->print_mutex);
+			break ;
 		}
 		i++;
-		if (t_philos[i].id_philo == PHILO_LAST)
-			i = 0;
 	}
 	return (NULL);
 }
 
-void *ft_monitor_eat(void *arg)
+void	*ft_monitor_eat(void *arg)
 {
-	t_shared *t_shared;
-	t_philo *t_philos;
-	int i;
+	t_shared	*t_shared;
+	t_philo		*t_philos;
+	int			i;
 
 	i = 0;
 	t_shared = arg;
@@ -97,15 +99,18 @@ void *ft_monitor_eat(void *arg)
 	while (1)
 	{
 		if (t_shared->philos_live == DEAD)
-			break;
+			break ;
 		if (t_philos[i].id_philo == PHILO_LAST)
 		{
 			t_shared->philos_live = DEAD;
-			printf("%sAll Philosofers have finised eating %s\n", BOLD_GREEN, RESET);
-			break;
+			pthread_mutex_lock(&t_philos->t_shared->print_mutex);
+			printf("%sAll Philosofers have finised eating %s\n", BOLD_GREEN,
+				RESET);
+			pthread_mutex_unlock(&t_philos->t_shared->print_mutex);
+			break ;
 		}
-			if (t_philos[i].times_eaten < t_shared->nbr_times_to_eat)
-				i = 0;
+		if (t_philos[i].times_eaten < t_shared->nbr_times_to_eat)
+			i = 0;
 		i++;
 	}
 	return (NULL);
@@ -113,13 +118,12 @@ void *ft_monitor_eat(void *arg)
 
 void	ft_init_theads(t_philo *t_philos, t_shared *t_shared)
 {
-	int	i;
-	pthread_t		t_monitor[2];
+	int			i;
+	pthread_t	t_monitor[2];
 
 	i = 0;
 	pthread_create(&t_monitor[0], NULL, &ft_monitor_dead, t_shared);
 	pthread_create(&t_monitor[1], NULL, &ft_monitor_eat, t_shared);
-
 	while (t_philos[i].id_philo != PHILO_LAST)
 	{
 		pthread_create(&t_philos[i].philo_thread, NULL, &ft_proces,
@@ -150,7 +154,6 @@ int	main(int argc, char **argv)
 	ft_init_philos(&t_shared, t_philos);
 	ft_print_philos(t_philos);
 	ft_init_theads(t_philos, &t_shared);
-	printf("Despues de los hilos \n");
 	// ft_print_philos(t_philos);
 	return (0);
 }

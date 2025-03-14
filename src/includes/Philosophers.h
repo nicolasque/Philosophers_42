@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/10 16:44:39 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:39:40 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # include <termios.h>
 # include <unistd.h>
 
-# define PHILO_MAX 8000
+# define PHILO_MAX 800
 # define PHILO_LAST -33
 # define ALIVE 22
 # define DEAD -23
