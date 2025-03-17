@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/14 15:39:40 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:05:27 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int						ft_check_dead_time(t_philo *t_philo);
 long					get_time_micros(void);
 long int				get_time_s(void);
 long int				get_time_mls(void);
-void					custom_sleep_ms(long int time);
+void					custom_sleep_ms(long int time, t_shared *t_shared);
 
 // ACCTIONS
 void					ft_eat(t_philo *t_philo);
