@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:41:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 18:00:28 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:47:27 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,11 @@ void	ft_eat(t_philo *t_philo)
 	if (ft_handle_single_philo(t_philo))
 		return ;
 	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->left_fork]);
-		if (ft_check_dead_time(t_philo) == DEAD)
-		return (pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->left_fork]),
-			(void)0);
-	ft_print_mutex(t_philo, TAKE_FORK);
-	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->right_fork]);
-		if (ft_check_dead_time(t_philo) == DEAD)
-		return (pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->left_fork]),
-			pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->right_fork]),
-			(void)0);
 	ft_print_mutex(t_philo, TAKE_FORK);
 	if (ft_check_dead_time(t_philo) == DEAD)
-		return (pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->left_fork]),
-			pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->right_fork]),
-			(void)0);
+		return (	pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->right_fork]),		(void)0);
+	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->right_fork]);
+	ft_print_mutex(t_philo, TAKE_FORK);
 	ft_print_mutex(t_philo, EAT);
 	t_philo->times_eaten++;
 	t_philo->last_time_eaten = get_time_mls();
@@ -55,15 +46,15 @@ void	ft_eat(t_philo *t_philo)
 
 void	ft_sleep(t_philo *t_philo)
 {
-		if (ft_check_dead_time(t_philo) == DEAD)
-		return ((void)0);
 	ft_print_mutex(t_philo, SLEEP);
 	custom_sleep_ms(t_philo->t_shared->time_to_sleep, t_philo->t_shared);
+	ft_check_dead_time(t_philo);
+
 }
 
 void	ft_think(t_philo *t_philo)
 {
-	if (ft_check_dead_time(t_philo) == DEAD)
-		return ((void)0);
 	ft_print_mutex(t_philo, THINK);
+	ft_check_dead_time(t_philo);
+
 }

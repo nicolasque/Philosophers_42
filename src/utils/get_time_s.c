@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:23:31 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 16:04:42 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:21:20 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,10 @@ void	custom_sleep_ms(long int time, t_shared *t_shared)
 {
 	long int start;
 
+	(void)t_shared;
 	start = get_time_mls();
 	while (1)
 	{
-		if (t_shared->philos_live == DEAD)
-			break;
 		if (diff_time(start) >= time)
 			break ;
 		usleep(100);
