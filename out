@@ -1,0 +1,79 @@
+ARGV:4 == (null)
+=================
+nbr_filos: 5
+time_to_die: 399
+time_to_eat: 200
+time_to_sleep: 200
+nbr_times_to_eat: 0
+=================
+=================
+Philo_id: 1
+Philo_left_fork: 0
+Philo_right_fork: 1
+Philo_live: [0;32mALIVE[0m
+Philo_time_eaten: 0
+Philo_time_start: 1742244399309
+Philo_time_end: 0
+=================
+
+=================
+Philo_id: 2
+Philo_left_fork: 1
+Philo_right_fork: 2
+Philo_live: [0;32mALIVE[0m
+Philo_time_eaten: 0
+Philo_time_start: 1742244399309
+Philo_time_end: 0
+=================
+
+=================
+Philo_id: 3
+Philo_left_fork: 2
+Philo_right_fork: 3
+Philo_live: [0;32mALIVE[0m
+Philo_time_eaten: 0
+Philo_time_start: 1742244399309
+Philo_time_end: 0
+=================
+
+=================
+Philo_id: 4
+Philo_left_fork: 3
+Philo_right_fork: 4
+Philo_live: [0;32mALIVE[0m
+Philo_time_eaten: 0
+Philo_time_start: 1742244399309
+Philo_time_end: 0
+=================
+
+=================
+Philo_id: 5
+Philo_left_fork: 4
+Philo_right_fork: 0
+Philo_live: [0;32mALIVE[0m
+Philo_time_eaten: 0
+Philo_time_start: 1742244399309
+Philo_time_end: 0
+=================
+
+[0;33m19 1 has taken a fork[0m
+[0;33m19 1 has taken a fork[0m
+[0;36m19 1 has eaten[0m
+[0;33m21 3 has taken a fork[0m
+[0;33m22 3 has taken a fork[0m
+[0;36m22 3 has eaten[0m
+[0;33m24 5 has taken a fork[0m
+[0;35m219 1 is sleeping[0m
+[0;33m220 2 has taken a fork[0m
+[0;33m220 5 has taken a fork[0m
+[0;36m220 5 has eaten[0m
+[0;35m222 3 is sleeping[0m
+[0;33m222 4 has taken a fork[0m
+[0;33m222 2 has taken a fork[0m
+[0;36m223 2 has eaten[0m
+[0;32m419 1 is thinking[0m
+[0;35m420 5 is sleeping[0m
+[0;33m420 4 has taken a fork[0m
+[0;36m420 4 has eaten[0m
+[0;33m420 1 has taken a fork[0m
+[0;31m421 1 Has died[0m

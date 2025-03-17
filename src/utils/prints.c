@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:22:01 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 20:47:53 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:15:50 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,10 @@ void	ft_print_philos(t_philo *t_philos)
 void	ft_print_mutex(t_philo *t_philo, char action)
 {
 	pthread_mutex_lock(&t_philo->t_shared->print_mutex);
-	ft_check_dead_time(t_philo);
+	pthread_mutex_lock(&t_philo->t_shared->death_mutex);
 	if (t_philo->t_shared->philos_live == DEAD)
-		return (pthread_mutex_unlock(&t_philo->t_shared->print_mutex), (void)0);
+		return (pthread_mutex_unlock(&t_philo->t_shared->death_mutex), pthread_mutex_unlock(&t_philo->t_shared->print_mutex), (void)0);
+	pthread_mutex_unlock(&t_philo->t_shared->death_mutex);
 	if (action == TAKE_FORK)
 		printf("%s%lld %d has taken a fork%s\n", YELLOW, (get_time_mls()
 				- t_philo->t_shared->program_star_time), t_philo->id_philo,

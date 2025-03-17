@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:41:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 20:47:27 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 22:00:26 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,22 @@ static int	ft_handle_single_philo(t_philo *t_philo)
 	return (1);
 }
 
+int ft_is_philos_dead(t_shared *t_shared)
+{
+	int is_dead;
+
+	pthread_mutex_lock(&t_shared->death_mutex);
+	is_dead = (t_shared->philos_live == DEAD);
+	pthread_mutex_unlock(&t_shared->death_mutex);
+	return is_dead;
+}
+
 void	ft_eat(t_philo *t_philo)
 {
 	if (ft_handle_single_philo(t_philo))
 		return ;
 	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->left_fork]);
 	ft_print_mutex(t_philo, TAKE_FORK);
-	if (ft_check_dead_time(t_philo) == DEAD)
-		return (	pthread_mutex_unlock(&t_philo->t_shared->forks[t_philo->right_fork]),		(void)0);
 	pthread_mutex_lock(&t_philo->t_shared->forks[t_philo->right_fork]);
 	ft_print_mutex(t_philo, TAKE_FORK);
 	ft_print_mutex(t_philo, EAT);
