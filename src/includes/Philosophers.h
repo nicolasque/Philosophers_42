@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 16:05:27 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:30:42 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@
 # define PHILO_LAST -33
 # define ALIVE 22
 # define DEAD -23
+# define TAKE_FORK 50
+# define EAT 51
+# define SLEEP 52
+# define THINK 53
+# define DIE 54
+# define ALL_EAT 55
 
 typedef struct s_philo	t_philo;
 
@@ -82,6 +88,8 @@ void					ft_init_shared(char **argv, t_shared *t_shared);
 void					ft_print_shared(t_shared *t_shared);
 void					ft_print_args(char **argv);
 void					ft_print_philos(t_philo *t_philos);
+void					ft_print_mutex(t_philo *t_philo, char action);
+
 // ft_mutex_destroy.c
 void					ft_mutex_destroyer(t_shared *t_shared);
 // ft_chak_dead_time.c
