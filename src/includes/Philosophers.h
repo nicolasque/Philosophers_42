@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 17:30:42 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/17 18:02:32 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define EAT 51
 # define SLEEP 52
 # define THINK 53
-# define DIE 54
+# define DIE_MSG 54
 # define ALL_EAT 55
 
 typedef struct s_philo	t_philo;
