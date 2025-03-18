@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:45:32 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:22:28 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:27:15 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ void	*ft_monitor_dead(void *arg)
 		if (t_philos[i].id_philo == PHILO_LAST)
 		{
 			i = 0;
-
 		}
 		ft_check_dead_time(&t_philos[i]);
 		pthread_mutex_lock(&t_shared->death_mutex);
+		if (t_shared->all_finish_eating == true)
+		{
+			pthread_mutex_unlock(&t_shared->death_mutex);
+			break;
+		}
 		if (t_philos[i].live == DEAD)
 		{
 			t_shared->philos_live = DEAD;
@@ -44,8 +48,6 @@ void	*ft_monitor_dead(void *arg)
 		pthread_mutex_unlock(&t_shared->death_mutex);
 		i++;
 		usleep(10);
-			if (t_shared->philos_live == DEAD)
-				break ;
 	}
 	return (NULL);
 }
@@ -74,6 +76,7 @@ void	*ft_monitor_eat(void *arg)
 		{
 			pthread_mutex_lock(&t_shared->death_mutex);
 			t_shared->philos_live = DEAD;
+			t_shared->all_finish_eating = true;
 			pthread_mutex_unlock(&t_shared->death_mutex);
 			pthread_mutex_lock(&t_philos->t_shared->print_mutex);
 			printf("%sAll Philosofers have finised eating %s\n", BOLD_GREEN,

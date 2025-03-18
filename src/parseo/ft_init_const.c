@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:46:16 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 14:51:51 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:21:49 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_init_shared(char **argv, t_shared *t_shared)
 	t_shared->time_to_sleep = ft_atol(argv[3]);
 	t_shared->program_star_time = get_time_mls();
 	t_shared->philos_live = ALIVE;
+	t_shared->all_finish_eating = false;
 	if (argv[4])
 		t_shared->nbr_times_to_eat = ft_atoi(argv[4]);
 	else

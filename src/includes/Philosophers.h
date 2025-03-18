@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 19:15:56 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:21:22 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_shared
 	int					nbr_times_to_eat;
 	long long int		program_star_time;
 	int					philos_live;
+	int					all_finish_eating;
 	pthread_mutex_t		print_mutex;
 	pthread_mutex_t		death_mutex;
 	pthread_mutex_t		*forks;
