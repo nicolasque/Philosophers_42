@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 00:41:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 11:42:16 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:15:48 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ static int	ft_handle_single_philo(t_philo *t_philo)
 	return (1);
 }
 
-int	ft_is_philos_dead(t_shared *t_shared)
+int ft_is_philos_dead(t_shared *t_shared)
 {
-	int	is_dead;
+	int is_dead;
 
 	pthread_mutex_lock(&t_shared->death_mutex);
 	is_dead = (t_shared->philos_live == DEAD);
 	pthread_mutex_unlock(&t_shared->death_mutex);
-	return (is_dead);
+	return is_dead;
 }
 
 void	ft_eat(t_philo *t_philo)
@@ -57,10 +57,12 @@ void	ft_sleep(t_philo *t_philo)
 	ft_print_mutex(t_philo, SLEEP);
 	custom_sleep_ms(t_philo->t_shared->time_to_sleep, t_philo->t_shared);
 	ft_check_dead_time(t_philo);
+
 }
 
 void	ft_think(t_philo *t_philo)
 {
 	ft_print_mutex(t_philo, THINK);
 	ft_check_dead_time(t_philo);
+
 }

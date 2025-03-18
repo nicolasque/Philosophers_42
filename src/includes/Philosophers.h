@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 11:48:13 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 12:01:19 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ bool					ft_check_args(int argc, char **argv);
 
 // INIT
 void					ft_init_shared(char **argv, t_shared *t_shared);
+void					ft_init_philos(t_shared *t_shared, t_philo *t_philo);
 
 // UTILS
 // Prints.c
