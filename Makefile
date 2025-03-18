@@ -24,6 +24,7 @@ UTILS_SRCS = \
 		$(UTILS_DIR)/prints.c \
 		$(UTILS_DIR)/ft_mutex_destroyer.c \
 		$(UTILS_DIR)/get_time_s.c \
+		$(UTILS_DIR)/ft_monitors.c \
 		$(UTILS_DIR)/ft_check_dead_time.c
 
 ACCTIONS_SRCS = \
