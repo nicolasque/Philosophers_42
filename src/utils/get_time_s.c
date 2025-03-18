@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 22:23:31 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 12:34:44 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:51:43 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,20 @@ long int	diff_time(long int time)
 	return (get_time_mls() - time);
 }
 
-void custom_sleep_ms(long time_ms, t_shared *t_shared)
+void	custom_sleep_ms(long time_ms, t_shared *t_shared)
 {
-    long start;
+	long	start;
 
-    start = get_time_mls();
-    while ((get_time_mls() - start) < time_ms)
-    {
-        // Check if simulation ended
-        pthread_mutex_lock(&t_shared->death_mutex);
-        if (t_shared->philos_live == DEAD)
-        {
-            pthread_mutex_unlock(&t_shared->death_mutex);
-            return;
-        }
-        pthread_mutex_unlock(&t_shared->death_mutex);
-        usleep(100); // Sleep in small increments
-    }
+	start = get_time_mls();
+	while ((get_time_mls() - start) < time_ms)
+	{
+		pthread_mutex_lock(&t_shared->death_mutex);
+		if (t_shared->philos_live == DEAD)
+		{
+			pthread_mutex_unlock(&t_shared->death_mutex);
+			return ;
+		}
+		pthread_mutex_unlock(&t_shared->death_mutex);
+		usleep(100);
+	}
 }

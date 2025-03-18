@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 12:32:52 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 14:51:56 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ void	*ft_monitor_dead(void *arg)
 	while (1)
 	{
 		if (t_philos[i].id_philo == PHILO_LAST)
+		{
 			i = 0;
+			if (t_shared->philos_live == DEAD)
+				break ;
+		}
 		ft_check_dead_time(&t_philos[i]);
 		pthread_mutex_lock(&t_shared->death_mutex);
 		if (t_philos[i].live == DEAD)
@@ -80,6 +84,13 @@ void	*ft_monitor_eat(void *arg)
 		return (NULL);
 	while (1)
 	{
+		pthread_mutex_lock(&t_shared->death_mutex);
+		if (t_shared->philos_live == DEAD)
+		{
+			pthread_mutex_unlock(&t_shared->death_mutex);
+			break ;
+		}
+		pthread_mutex_unlock(&t_shared->death_mutex);
 		if (t_philos[i].id_philo == PHILO_LAST)
 		{
 			pthread_mutex_lock(&t_shared->death_mutex);
