@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 01:35:37 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/10 17:57:08 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:43:26 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ bool	ft_check_nbr(char *str)
 	}
 	return (true);
 }
+
 bool	ft_chek_individual_arg(char **argv)
 {
 	if (ft_atoi(argv[0]) <= 0 || ft_atoi(argv[0]) >= PHILO_MAX)

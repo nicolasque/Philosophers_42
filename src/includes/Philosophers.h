@@ -6,12 +6,12 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/17 21:21:01 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 11:48:13 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef NEWMINI_H
-# define NEWMINI_H
+#ifndef PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
 # include "colors.h"
 # include "libft/libft.h"
@@ -105,7 +105,6 @@ void					custom_sleep_ms(long int time, t_shared *t_shared);
 void					ft_eat(t_philo *t_philo);
 void					ft_sleep(t_philo *t_philo);
 void					ft_think(t_philo *t_philo);
-int ft_is_philos_dead(t_shared *t_shared);
+int						ft_is_philos_dead(t_shared *t_shared);
 
-
-#endif
+#endif // PHILOSOPHERS_H

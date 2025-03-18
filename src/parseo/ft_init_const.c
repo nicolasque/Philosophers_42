@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_init_shared.c                                    :+:      :+:    :+:   */
+/*   ft_init_const.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/26 02:44:13 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/03 17:27:37 by nquecedo         ###   ########.fr       */
+/*   Created: 2025/03/18 11:46:16 by nquecedo          #+#    #+#             */
+/*   Updated: 2025/03/18 11:46:23 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/Philosophers.h"
 
-void ft_init_shared(char **argv, t_shared *t_shared)
+void	ft_init_shared(char **argv, t_shared *t_shared)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	t_shared->nbr_filo = ft_atol(argv[0]);
@@ -23,7 +23,6 @@ void ft_init_shared(char **argv, t_shared *t_shared)
 	t_shared->time_to_sleep = ft_atol(argv[3]);
 	t_shared->program_star_time = get_time_mls();
 	t_shared->philos_live = ALIVE;
-	printf("ARGV:4 == %s\n", argv[4]);
 	if (argv[4])
 		t_shared->nbr_times_to_eat = ft_atoi(argv[4]);
 	else
@@ -33,7 +32,7 @@ void ft_init_shared(char **argv, t_shared *t_shared)
 	t_shared->forks = malloc(sizeof(pthread_mutex_t) * t_shared->nbr_filo);
 	while (i < t_shared->nbr_filo)
 	{
-        pthread_mutex_init(&t_shared->forks[i], NULL);
+		pthread_mutex_init(&t_shared->forks[i], NULL);
 		i++;
 	}
 }
