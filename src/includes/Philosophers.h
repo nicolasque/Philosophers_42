@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 15:02:04 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 12:01:19 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:15:56 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,10 @@ void					ft_eat(t_philo *t_philo);
 void					ft_sleep(t_philo *t_philo);
 void					ft_think(t_philo *t_philo);
 int						ft_is_philos_dead(t_shared *t_shared);
+
+//MONITORS
+void	*ft_monitor_eat(void *arg);
+void	*ft_monitor_dead(void *arg);
+
 
 #endif // PHILOSOPHERS_H

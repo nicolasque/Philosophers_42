@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 14:51:56 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/18 19:16:42 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,82 +30,6 @@ void	*ft_proces(void *arg)
 		if (ft_is_philos_dead(t_philo->t_shared))
 			return (NULL);
 		ft_think(t_philo);
-	}
-	return (NULL);
-}
-
-void	*ft_monitor_dead(void *arg)
-{
-	t_shared	*t_shared;
-	t_philo		*t_philos;
-	int			i;
-
-	i = 0;
-	t_shared = arg;
-	t_philos = t_shared->t_philos;
-	while (1)
-	{
-		if (t_philos[i].id_philo == PHILO_LAST)
-		{
-			i = 0;
-			if (t_shared->philos_live == DEAD)
-				break ;
-		}
-		ft_check_dead_time(&t_philos[i]);
-		pthread_mutex_lock(&t_shared->death_mutex);
-		if (t_philos[i].live == DEAD)
-		{
-			t_shared->philos_live = DEAD;
-			pthread_mutex_unlock(&t_shared->death_mutex);
-			pthread_mutex_lock(&t_shared->print_mutex);
-			printf("%s%lld %d Has died%s\n", RED, (get_time_mls()
-					- t_shared->program_star_time), t_philos[i].id_philo,
-				RESET);
-			pthread_mutex_unlock(&t_shared->print_mutex);
-			break ;
-		}
-		pthread_mutex_unlock(&t_shared->death_mutex);
-		i++;
-		usleep(100);
-	}
-	return (NULL);
-}
-
-void	*ft_monitor_eat(void *arg)
-{
-	t_shared	*t_shared;
-	t_philo		*t_philos;
-	int			i;
-
-	i = 0;
-	t_shared = arg;
-	t_philos = t_shared->t_philos;
-	if (t_shared->nbr_times_to_eat == 0)
-		return (NULL);
-	while (1)
-	{
-		pthread_mutex_lock(&t_shared->death_mutex);
-		if (t_shared->philos_live == DEAD)
-		{
-			pthread_mutex_unlock(&t_shared->death_mutex);
-			break ;
-		}
-		pthread_mutex_unlock(&t_shared->death_mutex);
-		if (t_philos[i].id_philo == PHILO_LAST)
-		{
-			pthread_mutex_lock(&t_shared->death_mutex);
-			t_shared->philos_live = DEAD;
-			pthread_mutex_unlock(&t_shared->death_mutex);
-			pthread_mutex_lock(&t_philos->t_shared->print_mutex);
-			printf("%sAll Philosofers have finised eating %s\n", BOLD_GREEN,
-				RESET);
-			pthread_mutex_unlock(&t_philos->t_shared->print_mutex);
-			break ;
-		}
-		if (t_philos[i].times_eaten < t_shared->nbr_times_to_eat)
-			i = 0;
-		i++;
-		usleep(100);
 	}
 	return (NULL);
 }
@@ -150,6 +74,6 @@ int	main(int argc, char **argv)
 	ft_init_philos(&t_shared, t_philos);
 	ft_print_philos(t_philos);
 	ft_init_theads(t_philos, &t_shared);
-	ft_print_philos(t_philos);
+	// ft_print_philos(t_philos);
 	return (0);
 }
