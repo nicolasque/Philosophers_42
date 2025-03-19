@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/18 20:01:01 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:10:32 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_init_theads(t_philo *t_philos, t_shared *t_shared)
 
 	i = 0;
 	pthread_create(&t_monitor[0], NULL, &ft_monitor_dead, t_shared);
-	if (t_shared->nbr_times_to_eat)
+	if (t_shared->nbr_times_to_eat && t_shared->nbr_filo > 1)
 		pthread_create(&t_monitor[1], NULL, &ft_monitor_eat, t_shared);
 	while (t_philos[i].id_philo != PHILO_LAST)
 	{
@@ -51,7 +51,7 @@ void	ft_init_theads(t_philo *t_philos, t_shared *t_shared)
 	}
 	i = 0;
 	pthread_join(t_monitor[0], NULL);
-	if (t_shared->nbr_times_to_eat)
+	if (t_shared->nbr_times_to_eat && t_shared->nbr_filo > 1)
 		pthread_join(t_monitor[1], NULL);
 	while (t_philos[i].id_philo != PHILO_LAST)
 	{
