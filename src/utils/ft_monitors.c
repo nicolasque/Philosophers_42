@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:45:32 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/19 12:32:35 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:33:46 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	ft_set_dead_state(t_philo *t_philo, t_shared *t_shared, int action)
 	}
 }
 
-static void ft_init_args(void *arg, t_shared **t_shared, t_philo **t_philos, int *i)
+static void	ft_init_args(void *arg, t_shared **t_shared, t_philo **t_philos,
+		int *i)
 {
 	i = 0;
 	*t_shared = arg;

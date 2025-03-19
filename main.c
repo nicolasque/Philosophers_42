@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/19 12:10:32 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:34:06 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	t_philo		t_philos[PHILO_MAX];
 
 	(void)t_shared;
-	argv++; // Para saltar el nombre del porgrama
+	argv++;
 	if (ft_check_args(argc, argv) == false)
 		return (1);
 	ft_init_shared(argv, &t_shared);
@@ -74,6 +74,7 @@ int	main(int argc, char **argv)
 	ft_init_philos(&t_shared, t_philos);
 	ft_print_philos(t_philos);
 	ft_init_theads(t_philos, &t_shared);
-	// ft_print_philos(t_philos);
 	return (0);
 }
+
+// ft_print_philos(t_philos);
