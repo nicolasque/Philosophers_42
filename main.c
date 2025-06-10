@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/21 14:26:00 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/19 12:34:06 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/06/10 03:10:09 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,17 @@ void	*ft_proces(void *arg)
 
 	t_philo = arg;
 	if (t_philo->id_philo % 2 == 0)
-		custom_sleep_ms(50, t_philo->t_shared);
-	while (1)
+		custom_sleep_ms(5, t_philo->t_shared);
+	while (!ft_is_philos_dead(t_philo->t_shared))
 	{
-		if (ft_is_philos_dead(t_philo->t_shared))
-			return (NULL);
 		ft_eat(t_philo);
 		if (ft_is_philos_dead(t_philo->t_shared))
-			return (NULL);
+			break;
 		ft_sleep(t_philo);
 		if (ft_is_philos_dead(t_philo->t_shared))
-			return (NULL);
+			break;
 		ft_think(t_philo);
+		usleep(100);
 	}
 	return (NULL);
 }

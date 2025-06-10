@@ -6,7 +6,7 @@
 /*   By: nquecedo <nquecedo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:45:32 by nquecedo          #+#    #+#             */
-/*   Updated: 2025/03/19 12:33:46 by nquecedo         ###   ########.fr       */
+/*   Updated: 2025/06/10 03:08:39 by nquecedo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	*ft_monitor_dead(void *arg)
 			ft_set_dead_state(&t_philos[i], t_shared, DIE_MSG);
 			break ;
 		}
-		pthread_mutex_unlock(&t_shared->death_mutex);
 		i++;
+		pthread_mutex_unlock(&t_shared->death_mutex);
 		usleep(10);
 	}
 	pthread_mutex_unlock(&t_shared->death_mutex);
